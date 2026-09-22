@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Motherland — Home, Delivered</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:wght@400;700&family=Caveat:wght@500;600;700&family=Noto+Sans+Tamil:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    --ink: #2A2118;
+    --ink-soft: #5B4C3B;
+    --paper: #F7EFDA;
+    --paper-alt: #EFE4C7;
+    --card: #FFFCF3;
+    --kraft: #C9A66C;
+    --kraft-deep: #A9824E;
+    --red: #B23A2E;
+    --blue: #274472;
+    --gold: #C4881F;
+    --line: rgba(42, 33, 24, 0.16);
+    --shadow: rgba(42, 33, 24, 0.18);
+
+    --font-display: 'Fraunces', 'Iowan Old Style', serif;
+    --font-body: 'Karla', -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'Courier Prime', 'Courier New', monospace;
+    --font-hand: 'Caveat', cursive;
+    --font-tamil: 'Noto Sans Tamil', sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #F1E6CE;
+      --ink-soft: #C9B99A;
+      --paper: #1B1710;
+      --paper-alt: #241E14;
+      --card: #262015;
+      --kraft: #6B532F;
+      --kraft-deep: #4A3A22;
+      --red: #E06A5A;
+      --blue: #86A6D9;
+      --gold: #E8B857;
+      --line: rgba(241, 230, 206, 0.16);
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #F1E6CE;
+    --ink-soft: #C9B99A;
+    --paper: #1B1710;
+    --paper-alt: #241E14;
+    --card: #262015;
+    --kraft: #6B532F;
+    --kraft-deep: #4A3A22;
+    --red: #E06A5A;
+    --blue: #86A6D9;
+    --gold: #E8B857;
+    --line: rgba(241, 230, 206, 0.16);
+    --shadow: rgba(0, 0, 0, 0.45);
+  }
+
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  * { box-sizing: inherit; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img, svg { max-width: 100%; }
+
+  a { color: inherit; }
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  :focus-visible {
+    outline: 2.5px solid var(--red);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 56px);
+  }
+
+  /* ---------- Airmail stripe ---------- */
+  .airmail-stripe {
+    height: 10px;
+    width: 100%;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--red) 0 18px,
+      var(--paper) 18px 26px,
+      var(--blue) 26px 44px,
+      var(--paper) 44px 52px
+    );
+    opacity: 0.9;
+  }
+
+  /* ---------- Header ---------- */
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px clamp(20px, 5vw, 56px);
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .brand .tamil {
+    font-family: var(--font-tamil);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  nav.links {
+    display: flex;
+    gap: clamp(14px, 2vw, 28px);
+    font-size: 14.5px;
+  }
+  nav.links a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    padding: 6px 2px;
+    border-bottom: 1px solid transparent;
+  }
+  nav.links a:hover { color: var(--ink); border-color: var(--kraft-deep); }
+  .nav-cta {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 9px 16px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  @media (max-width: 720px) {
+    nav.links { display: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: clamp(48px, 8vw, 96px) 0 clamp(40px, 6vw, 72px);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(28px, 5vw, 64px);
+    align-items: center;
+  }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+  }
+  .eyebrow-route {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .eyebrow-route .dash {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--ink-soft) 0 5px, transparent 5px 9px);
+  }
+  h1.headline {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(40px, 6.2vw, 68px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    margin: 0 0 22px;
+  }
+  h1.headline em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--red);
+  }
+  .hero p.lede {
+    font-size: clamp(16.5px, 1.6vw, 19px);
+    max-width: 46ch;
+    color: var(--ink-soft);
+    margin: 0 0 30px;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 34px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 22px;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary {
+    background: var(--red);
+    color: #FFF8ED;
+  }
+  .btn-primary:hover { filter: brightness(0.9); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+  .hero-meta {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .hero-meta strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ---------- Shipping tag (hero visual) ---------- */
+  .tag-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .tag {
+    position: relative;
+    width: min(330px, 86vw);
+    background: var(--card);
+    border: 1.5px solid var(--ink);
+    border-radius: 10px;
+    padding: 30px 26px 26px;
+    box-shadow: 8px 10px 0 var(--shadow);
+    transform: rotate(3.5deg);
+    animation: stamp-in 0.6s cubic-bezier(.2,.9,.3,1.2) both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tag, .postmark { animation: none !important; }
+  }
+  @keyframes stamp-in {
+    0% { opacity: 0; transform: rotate(3.5deg) translateY(-14px) scale(0.94); }
+    100% { opacity: 1; transform: rotate(3.5deg) translateY(0) scale(1); }
+  }
+  .tag-hole {
+    position: absolute;
+    left: -8px;
+    top: 41px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+  }
+  .tag-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed var(--line);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+  .tag-item {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    line-height: 1.2;
+  }
+  .tag-route {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0 18px;
+  }
+  .tag-route svg { flex: 0 0 auto; }
+  .postmark {
+    position: absolute;
+    right: 18px;
+    top: -16px;
+    width: 78px;
+    height: 78px;
+    animation: postmark-in 0.7s 0.35s cubic-bezier(.2,.9,.3,1.3) both;
+  }
+  @keyframes postmark-in {
+    0% { opacity: 0; transform: rotate(-24deg) scale(0.5); }
+    100% { opacity: 1; transform: rotate(-14deg) scale(1); }
+  }
+  .tag-stamps {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .mini-stamp {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    border: 1px solid var(--ink-soft);
+    color: var(--ink-soft);
+    padding: 3px 7px;
+    border-radius: 2px;
+  }
+
+  /* ---------- Section shell ---------- */
+  section { padding: clamp(56px, 8vw, 96px) 0; }
+  .section-head {
+    max-width: 62ch;
+    margin-bottom: clamp(32px, 5vw, 52px);
+  }
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+  h2.section-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.12;
+    margin: 0 0 14px;
+  }
+  .section-head p {
+    color: var(--ink-soft);
+    font-size: clamp(15.5px, 1.4vw, 17.5px);
+    margin: 0;
+  }
+
+  /* ---------- Letter section ---------- */
+  .letter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 4vw, 48px);
+    align-items: start;
+  }
+  @media (max-width: 860px) { .letter-grid { grid-template-columns: 1fr; } }
+
+  .postcard {
+    background: var(--card);
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    padding: 34px clamp(22px, 3vw, 36px) 30px;
+    position: relative;
+    box-shadow: 6px 7px 0 var(--shadow);
+  }
+  .postcard .tape {
+    position: absolute;
+    top: -14px;
+    left: 34px;
+    width: 84px;
+    height: 26px;
+    background: rgba(196, 136, 31, 0.35);
+    border: 1px solid rgba(42,33,24,0.15);
+    transform: rotate(-3deg);
+  }
+  .postcard p {
+    font-family: var(--font-hand);
+    font-size: clamp(22px, 2.6vw, 26px);
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0;
+  }
+  .postcard .sign {
+    margin-top: 18px;
+    font-family: var(--font-hand);
+    font-size: 22px;
+    color: var(--ink-soft);
+  }
+
+  .reality h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 16px;
+  }
+  .reality ul {
+    list-style: none;
+    margin: 0 0 26px;
+    padding: 0;
+  }
+  .reality li {
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    padding: 12px 0;
+    border-top: 1px dashed var(--line);
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 10px;
+  }
+  .reality li:last-child { border-bottom: 1px dashed var(--line); }
+  .reality li .x { color: var(--red); font-weight: 700; }
+  .solution-line {
+    font-size: clamp(17px, 1.8vw, 19.5px);
+    line-height: 1.5;
+  }
+  .solution-line strong {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  /* ---------- Tracking timeline ---------- */
+  .track-line {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .track-line::before {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: 4%;
+    right: 4%;
+    height: 0;
+    border-top: 2px dashed var(--kraft-deep);
+  }
+  .stop {
+    position: relative;
+    padding: 0 12px;
+    text-align: left;
+  }
+  .stop .dot {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .stop:nth-child(odd) .dot { background: var(--red); color: #FFF6EC; border-color: var(--red); }
+  .stop:nth-child(even) .dot { background: var(--blue); color: #FFF6EC; border-color: var(--blue); }
+  .stop h4 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .stop p {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  @media (max-width: 780px) {
+    .track-line { grid-template-columns: 1fr; gap: 28px; }
+    .track-line::before { display: none; }
+  }
+
+  /* ---------- Manifest (categories) ---------- */
+  .manifest {
+    background: var(--card);
+    border: 1.5px solid var(--ink);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .manifest-head {
+    display: grid;
+    grid-template-columns: 50px 1.4fr 1fr 100px;
+    gap: 14px;
+    padding: 14px 22px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--paper);
+    background: var(--ink);
+  }
+  .manifest-row {
+    display: grid;
+    grid-template-columns: 50px 1.4fr 1fr 100px;
+    gap: 14px;
+    padding: 18px 22px;
+    border-top: 1px solid var(--line);
+    align-items: center;
+  }
+  .manifest-row:hover { background: var(--paper-alt); }
+  .m-num { font-family: var(--font-mono); color: var(--ink-soft); font-size: 13px; }
+  .m-name { font-family: var(--font-display); font-weight: 600; font-size: 16.5px; }
+  .m-desc { color: var(--ink-soft); font-size: 13.5px; }
+  .m-tag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-align: center;
+    padding: 4px 6px;
+    border-radius: 2px;
+    border: 1px solid var(--kraft-deep);
+    color: var(--kraft-deep);
+    white-space: nowrap;
+  }
+  .m-tag.easy { border-color: #4C7A52; color: #4C7A52; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .m-tag.easy { color: #8FCB96; border-color: #8FCB96; }
+  }
+  :root[data-theme="dark"] .m-tag.easy { color: #8FCB96; border-color: #8FCB96; }
+  @media (max-width: 680px) {
+    .manifest-head { display: none; }
+    .manifest-row { grid-template-columns: 34px 1fr; }
+    .m-desc, .m-tag { grid-column: 2; }
+    .m-tag { justify-self: start; margin-top: 6px; }
+  }
+
+  /* ---------- Compare (old way vs Motherland) ---------- */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1.5px solid var(--ink);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) { .compare { grid-template-columns: 1fr; } }
+  .compare .col { padding: clamp(24px, 3vw, 34px); }
+  .compare .old {
+    background: var(--paper-alt);
+    border-right: 1.5px dashed var(--ink);
+  }
+  @media (max-width: 720px) {
+    .compare .old { border-right: none; border-bottom: 1.5px dashed var(--ink); }
+  }
+  .compare .new { background: var(--card); }
+  .compare h4 {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+  .compare .new h4 { color: var(--red); }
+  .compare .row {
+    display: flex;
+    gap: 10px;
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  .compare .row:first-of-type { border-top: none; }
+  .compare .mark { flex: 0 0 auto; font-weight: 700; }
+  .compare .old .mark { color: var(--red); }
+  .compare .new .mark { color: #4C7A52; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .compare .new .mark { color: #8FCB96; }
+  }
+  :root[data-theme="dark"] .compare .new .mark { color: #8FCB96; }
+
+  /* ---------- Personas (passport cards) ---------- */
+  .personas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  @media (max-width: 860px) { .personas { grid-template-columns: 1fr; } }
+  .passport {
+    background: var(--blue);
+    color: #F3ECDA;
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+    min-height: 230px;
+    box-shadow: 5px 6px 0 var(--shadow);
+  }
+  .passport::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(243,236,218,0.35);
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  .passport .ptype {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    opacity: 0.8;
+    margin-bottom: 22px;
+  }
+  .passport h4 {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+  .passport p {
+    font-size: 13.5px;
+    opacity: 0.92;
+    margin: 0 0 30px;
+  }
+  .passport .stampmini {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    border: 1px solid rgba(243,236,218,0.5);
+    padding: 4px 8px;
+    border-radius: 2px;
+    transform: rotate(-6deg);
+  }
+
+  /* ---------- Postage rates (revenue model) ---------- */
+  .rates {
+    border: 1.5px solid var(--ink);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .rates-strip { height: 6px; background: repeating-linear-gradient(-45deg, var(--red) 0 10px, var(--paper) 10px 14px, var(--blue) 14px 24px, var(--paper) 24px 28px); }
+  .rate-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding: 22px clamp(20px, 3vw, 32px);
+    align-items: baseline;
+    border-top: 1px dashed var(--line);
+  }
+  .rate-row:first-child { border-top: none; }
+  .rate-row .rname { font-family: var(--font-display); font-weight: 600; font-size: 18px; }
+  .rate-row .rdesc { display: block; font-size: 13.5px; color: var(--ink-soft); font-weight: 400; margin-top: 4px; font-family: var(--font-body); }
+  .rate-row .rval { font-family: var(--font-mono); font-size: 19px; color: var(--red); white-space: nowrap; }
+
+  /* ---------- Order / declaration form ---------- */
+  .order-card {
+    background: var(--card);
+    border: 1.5px solid var(--ink);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 8px 9px 0 var(--shadow);
+  }
+  .order-strip { height: 6px; background: repeating-linear-gradient(-45deg, var(--red) 0 10px, var(--paper) 10px 14px, var(--blue) 14px 24px, var(--paper) 24px 28px); }
+  .order-inner { padding: clamp(26px, 4vw, 44px); }
+  .order-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px dashed var(--line);
+    padding-bottom: 18px;
+    margin-bottom: 26px;
+  }
+  .order-head h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0;
+  }
+  .order-head span {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+  }
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 24px;
+  }
+  @media (max-width: 640px) { .field-grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field.full { grid-column: 1 / -1; }
+  .field label {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
+    color: var(--ink-soft);
+  }
+  .field label .opt { color: var(--kraft-deep); font-style: normal; }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="url"],
+  .field input[type="number"],
+  .field textarea {
+    font-family: var(--font-body);
+    font-size: 15px;
+    padding: 11px 13px;
+    border: 1.5px solid var(--line);
+    border-radius: 4px;
+    background: var(--paper);
+    color: var(--ink);
+    width: 100%;
+  }
+  .field textarea { resize: vertical; min-height: 80px; font-family: var(--font-body); }
+  .field input:focus, .field textarea:focus {
+    border-color: var(--red);
+    outline: none;
+  }
+  .field-error {
+    display: none;
+    font-size: 12px;
+    color: var(--red);
+    font-family: var(--font-body);
+  }
+  .field-error.show { display: block; }
+  .field input.error, .field textarea.error { border-color: var(--red); }
+  .radio-group { display: flex; flex-direction: column; gap: 10px; }
+  .radio-option {
+    display: flex;
+    gap: 11px;
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 12px 14px;
+    border: 1.5px solid var(--line);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .radio-option input { margin-top: 3px; flex: 0 0 auto; accent-color: var(--red); }
+  .radio-option .opt-desc { display: block; color: var(--ink-soft); font-size: 12.5px; margin-top: 2px; }
+  .radio-option.checked { border-color: var(--red); background: rgba(178, 58, 46, 0.06); }
+
+  .item-add-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .items-table {
+    border: 1.5px solid var(--ink);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .items-head {
+    display: grid;
+    grid-template-columns: 40px 1.7fr 56px 1fr 108px;
+    gap: 12px;
+    padding: 12px 18px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: var(--paper);
+    background: var(--ink);
+  }
+  .items-empty {
+    padding: 22px 18px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .items-empty.hide { display: none; }
+  .item-row {
+    display: grid;
+    grid-template-columns: 40px 1.7fr 56px 1fr 108px;
+    gap: 12px;
+    padding: 14px 18px;
+    border-top: 1px solid var(--line);
+    align-items: center;
+    background: var(--card);
+  }
+  .item-row .i-num { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-soft); }
+  .item-row .i-name { font-family: var(--font-display); font-weight: 600; font-size: 15px; }
+  .item-row .i-name a {
+    display: block;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--blue);
+    text-decoration: none;
+    margin-top: 2px;
+  }
+  .item-row .i-qty { font-family: var(--font-mono); font-size: 13px; }
+  .item-row .i-tags { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+  .item-row .i-tags .m-tag { border-color: var(--blue); color: var(--blue); }
+  .item-row .i-actions { display: flex; gap: 12px; justify-content: flex-end; }
+  .item-row .i-actions button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .item-row .i-actions .edit-btn { color: var(--blue); }
+  .item-row .i-actions .remove-btn { color: var(--red); }
+  @media (max-width: 680px) {
+    .items-head { display: none; }
+    .item-row {
+      grid-template-columns: 24px 1fr;
+      row-gap: 8px;
+    }
+    .item-row .i-qty { grid-column: 2; justify-self: start; }
+    .item-row .i-tags { grid-column: 2; flex-direction: row; flex-wrap: wrap; }
+    .item-row .i-actions { grid-column: 2; justify-content: flex-start; }
+  }
+  .order-submit-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-top: 22px;
+    border-top: 1px dashed var(--line);
+  }
+  .order-note {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+  }
+  .order-fallback {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    background: var(--paper-alt);
+    border: 1px dashed var(--kraft-deep);
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 22px;
+    display: none;
+  }
+  .order-fallback a { color: var(--red); font-weight: 700; text-decoration: none; }
+  .order-fallback.show { display: block; }
+
+  .receipt {
+    display: none;
+    text-align: center;
+    padding: 10px 6px 6px;
+  }
+  .receipt.show { display: block; }
+  .receipt .stamp-ring {
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    border: 2.5px solid var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-8deg);
+  }
+  .receipt .stamp-ring svg { width: 46px; height: 46px; }
+  .receipt h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .receipt p { color: var(--ink-soft); font-size: 14.5px; margin: 0 0 22px; }
+  .receipt .code {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    border: 1.5px dashed var(--ink);
+    border-radius: 4px;
+    padding: 10px 18px;
+    margin-bottom: 24px;
+  }
+  .receipt .btn-ghost { margin: 0 auto; display: inline-flex; }
+  .order-count {
+    margin-top: 18px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* ---------- Roadmap stamps ---------- */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  @media (max-width: 860px) { .roadmap { grid-template-columns: 1fr; } }
+  .visa {
+    border: 2px solid var(--ink);
+    border-radius: 50% / 16%;
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+  }
+  .visa::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed var(--ink-soft);
+    border-radius: 50% / 16%;
+  }
+  .visa .phase {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .visa h4 {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    color: var(--red);
+  }
+  .visa p {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ---------- CTA / contact ---------- */
+  .cta-block {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 10px;
+    padding: clamp(36px, 6vw, 60px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-block h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 0 14px;
+  }
+  .cta-block p {
+    color: rgba(247,239,218,0.75);
+    max-width: 52ch;
+    margin: 0 auto 30px;
+    font-size: 16px;
+  }
+  .cta-form {
+    display: flex;
+    gap: 10px;
+    max-width: 440px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cta-form input[type="email"] {
+    flex: 1 1 220px;
+    padding: 13px 16px;
+    border-radius: 3px;
+    border: 1.5px solid rgba(247,239,218,0.4);
+    background: rgba(247,239,218,0.08);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 15px;
+    min-width: 0;
+  }
+  .cta-form input[type="email"]::placeholder { color: rgba(247,239,218,0.5); }
+  .cta-form .btn-primary { flex: 0 0 auto; }
+  .cta-note {
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: rgba(247,239,218,0.55);
+  }
+  #form-status {
+    margin-top: 14px;
+    font-size: 14px;
+    min-height: 1.4em;
+  }
+
+  /* ---------- Footer ---------- */
+  footer.site {
+    padding: 40px 0 calc(40px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--line);
+  }
+  .foot-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .foot-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 17px;
+  }
+  .foot-links {
+    display: flex;
+    gap: 20px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .foot-links a { text-decoration: none; }
+  .foot-links a:hover { color: var(--ink); }
+  .approved {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    border: 1.5px solid var(--red);
+    color: var(--red);
+    padding: 5px 10px;
+    border-radius: 3px;
+    transform: rotate(-4deg);
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<div class="airmail-stripe" aria-hidden="true"></div>
+
+<header class="site">
+  <div class="nav">
+    <a href="#top" class="brand">Motherland <span class="tamil">தாய் மண்</span></a>
+    <nav class="links" aria-label="Section links">
+      <a href="#how">How it works</a>
+      <a href="#manifest">What you can send</a>
+      <a href="#model">Business model</a>
+      <a href="#roadmap">Roadmap</a>
+    </nav>
+    <a class="nav-cta" href="#order">Place an order</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-route">
+          <span>CHENNAI · MUMBAI · DELHI</span>
+          <span class="dash" aria-hidden="true"></span>
+          <span>BRAMPTON · TORONTO · GTA</span>
+        </div>
+        <h1 class="headline">Home doesn't fit<br>in a suitcase.<br><em>We deliver it anyway.</em></h1>
+        <p class="lede">Motherland is the trusted hand back home — we source, pack, and ship the snacks, spices, and small comforts you can't find anywhere else, straight to your door abroad.</p>
+        <div class="hero-ctas">
+          <a href="#order" class="btn btn-primary">Place an order</a>
+          <a href="#how" class="btn btn-ghost">See how it ships</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>2–3 wks</strong>request to doorstep</div>
+          <div><strong>750K+</strong>diaspora in the GTA</div>
+          <div><strong>0</strong>inventory risk to start</div>
+        </div>
+      </div>
+
+      <div class="tag-wrap">
+        <div class="tag">
+          <div class="tag-hole" aria-hidden="true"></div>
+          <svg class="postmark" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="44" fill="none" stroke="#B23A2E" stroke-width="2.5"/>
+            <circle cx="50" cy="50" r="36" fill="none" stroke="#B23A2E" stroke-width="1.5"/>
+            <text x="50" y="38" text-anchor="middle" font-family="Courier Prime, monospace" font-size="9" fill="#B23A2E">MOTHERLAND</text>
+            <text x="50" y="58" text-anchor="middle" font-family="Courier Prime, monospace" font-size="8" fill="#B23A2E">PARCEL POST</text>
+            <text x="50" y="70" text-anchor="middle" font-family="Courier Prime, monospace" font-size="7" fill="#B23A2E">DEPARTED · IND</text>
+          </svg>
+          <div class="tag-label">
+            <span>PARCEL TAG</span>
+            <span>NO. 0148</span>
+          </div>
+          <div class="tag-item">Filter coffee decoction, 3 pouches</div>
+          <div class="tag-route">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Coimbatore → Brampton, ON
+          </div>
+          <div class="tag-stamps">
+            <span class="mini-stamp">QC PASSED</span>
+            <span class="mini-stamp">FRAGILE</span>
+            <span class="mini-stamp">BATCH 04</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div style="border-top:1px dashed var(--line)"></div></div>
+
+  <!-- THE ACHE / LETTER -->
+  <section id="letter">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span>THE ACHE</div>
+        <h2 class="section-title">Everyone abroad is missing something small</h2>
+      </div>
+
+      <div class="letter-grid">
+        <div class="postcard">
+          <div class="tape" aria-hidden="true"></div>
+          <p>Dear home — it's not the big things I miss. It's the exact brand of pickle amma buys, the murukku from the shop near the bus stand, the soap that smells like your bathroom. Nobody abroad sells these. Nobody abroad even knows to look.</p>
+          <div class="sign">— every second-year abroad, probably</div>
+        </div>
+
+        <div class="reality">
+          <h3>Right now, getting it there means:</h3>
+          <ul>
+            <li><span class="x">✕</span><span>Begging a relative to carry 4 kg of snacks in their check-in bag</span></li>
+            <li><span class="x">✕</span><span>Hoping a stranger on Instagram ships what they promised</span></li>
+            <li><span class="x">✕</span><span>Guessing whether it'll even clear customs</span></li>
+            <li><span class="x">✕</span><span>Paying whatever price is quoted that day, in cash, no receipt</span></li>
+          </ul>
+          <p class="solution-line"><strong>Motherland is the fix:</strong> a standing, accountable channel between India and everywhere its people have scattered to — verified sourcing, transparent pricing, tracked delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span>TRACKING</div>
+        <h2 class="section-title">From your message to their doorstep</h2>
+        <p>Every order moves through the same four stops — batched with others heading the same way, to keep shipping honest and affordable.</p>
+      </div>
+
+      <div class="track">
+        <div class="track-line">
+          <div class="stop">
+            <div class="dot">01</div>
+            <h4>You ask</h4>
+            <p>Send the request over WhatsApp — item, brand, quantity, and where it's headed.</p>
+          </div>
+          <div class="stop">
+            <div class="dot">02</div>
+            <h4>We source</h4>
+            <p>Bought locally, quality-checked, and photo-confirmed before it's ever packed.</p>
+          </div>
+          <div class="stop">
+            <div class="dot">03</div>
+            <h4>We consolidate</h4>
+            <p>Grouped with other orders to the same city, on a regular sailing schedule.</p>
+          </div>
+          <div class="stop">
+            <div class="dot">04</div>
+            <h4>It arrives</h4>
+            <p>Tracked courier, straight to the door — with a story worth telling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFEST / CATEGORIES -->
+  <section id="manifest">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span>DECLARATION</div>
+        <h2 class="section-title">What's on the manifest</h2>
+        <p>We're starting with what travels safely and clears customs easily — then widening the list as trust builds.</p>
+      </div>
+
+      <div class="manifest">
+        <div class="manifest-head">
+          <span>NO.</span><span>ITEM</span><span>NOTE</span><span>STATUS</span>
+        </div>
+        <div class="manifest-row">
+          <span class="m-num">01</span>
+          <span class="m-name">Snacks &amp; packaged food</span>
+          <span class="m-desc">Murukku, banana chips, biscuits, mixture</span>
+          <span class="m-tag easy">SHIPS NOW</span>
+        </div>
+        <div class="manifest-row">
+          <span class="m-num">02</span>
+          <span class="m-name">Spices &amp; masalas</span>
+          <span class="m-desc">Ground, whole, and house-blend podis</span>
+          <span class="m-tag easy">SHIPS NOW</span>
+        </div>
+        <div class="manifest-row">
+          <span class="m-num">03</span>
+          <span class="m-name">Clothing &amp; textiles</span>
+          <span class="m-desc">Sarees, dhotis, everyday ethnic wear</span>
+          <span class="m-tag">PHASE 2</span>
+        </div>
+        <div class="manifest-row">
+          <span class="m-num">04</span>
+          <span class="m-name">Books &amp; media</span>
+          <span class="m-desc">Regional literature, devotional texts</span>
+          <span class="m-tag">PHASE 2</span>
+        </div>
+        <div class="manifest-row">
+          <span class="m-num">05</span>
+          <span class="m-name">Jewelry &amp; accessories</span>
+          <span class="m-desc">Traditional pieces, gifting occasions</span>
+          <span class="m-tag">PHASE 2</span>
+        </div>
+        <div class="manifest-row">
+          <span class="m-num">06</span>
+          <span class="m-name">Festival &amp; wedding items</span>
+          <span class="m-desc">Seasonal — Diwali, Pongal, weddings</span>
+          <span class="m-tag">PHASE 3</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section id="compare">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span>CARBON COPY</div>
+        <h2 class="section-title">Same errand, two very different experiences</h2>
+      </div>
+
+      <div class="compare">
+        <div class="col old">
+          <h4>THE WAY IT'S DONE TODAY</h4>
+          <div class="row"><span class="mark">✕</span><span>Price changes depending who you ask</span></div>
+          <div class="row"><span class="mark">✕</span><span>No one to call if something's wrong</span></div>
+          <div class="row"><span class="mark">✕</span><span>Delivery depends on the next visiting relative</span></div>
+          <div class="row"><span class="mark">✕</span><span>Same snacks for everyone, regardless of region</span></div>
+        </div>
+        <div class="col new">
+          <h4>THE MOTHERLAND WAY</h4>
+          <div class="row"><span class="mark">✓</span><span>One published rate card, no haggling</span></div>
+          <div class="row"><span class="mark">✓</span><span>Photo-verified sourcing, tracked shipping</span></div>
+          <div class="row"><span class="mark">✓</span><span>Regular batch sailings — no waiting on travel plans</span></div>
+          <div class="row"><span class="mark">✓</span><span>Regional focus — built around what Brampton actually misses</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAS -->
+  <section id="who">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span>PASSENGER MANIFEST</div>
+        <h2 class="section-title">Who we're packing for</h2>
+      </div>
+
+      <div class="personas">
+        <div class="passport">
+          <div class="ptype">RESIDENT · 0–5 YRS ABROAD</div>
+          <h4>The newly landed</h4>
+          <p>Still setting up life abroad, still homesick for the exact taste of a home kitchen. The strongest craving, and the easiest to earn for life.</p>
+          <div class="stampmini">CAT. A</div>
+        </div>
+        <div class="passport">
+          <div class="ptype">RESIDENT · SETTLED FAMILY</div>
+          <h4>The established household</h4>
+          <p>Years abroad, kids growing up in two cultures. Buys for festivals, for gifting, for keeping tradition alive on the other side of the world.</p>
+          <div class="stampmini">CAT. B</div>
+        </div>
+        <div class="passport">
+          <div class="ptype">VISITOR · STUDENT VISA</div>
+          <h4>The international student</h4>
+          <p>Budget-tight, homesick, and just wants the snacks from the hostel canteen. Small orders, high frequency, fiercely loyal once we deliver.</p>
+          <div class="stampmini">CAT. C</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVENUE MODEL -->
+  <section id="model">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span>RATE CARD</div>
+        <h2 class="section-title">How Motherland earns its keep</h2>
+        <p>Three simple charges, all disclosed up front — nothing hidden in the exchange rate.</p>
+      </div>
+
+      <div class="rates">
+        <div class="rates-strip" aria-hidden="true"></div>
+        <div class="rate-row">
+          <div class="rname">Service fee<span class="rdesc">Sourcing, quality check, and packing per item</span></div>
+          <div class="rval">10–20%</div>
+        </div>
+        <div class="rate-row">
+          <div class="rname">Shipping &amp; handling<span class="rdesc">Charged per shipment, kept lean through batching</span></div>
+          <div class="rval">flat / weight</div>
+        </div>
+        <div class="rate-row">
+          <div class="rname">Monthly care box<span class="rdesc">A curated subscription — no request needed</span></div>
+          <div class="rval">recurring</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span>VISA STAMPS</div>
+        <h2 class="section-title">Where we're headed</h2>
+      </div>
+
+      <div class="roadmap">
+        <div class="visa">
+          <div class="phase">MONTHS 1–2</div>
+          <h4>Phase 1 · Validate</h4>
+          <p>WhatsApp order-taking. One category — snacks &amp; spices. One city — Brampton. Fifty paying customers.</p>
+        </div>
+        <div class="visa">
+          <div class="phase">MONTHS 3–5</div>
+          <h4>Phase 2 · Systemize</h4>
+          <p>A simple ordering site, wider categories, formal courier partners, and the first subscription boxes.</p>
+        </div>
+        <div class="visa">
+          <div class="phase">MONTHS 6–12</div>
+          <h4>Phase 3 · Scale</h4>
+          <p>New diaspora cities across the US and UK, warehouse automation, and a growing manifest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER FORM -->
+  <section id="order">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker"><span class="dot"></span>DECLARATION FORM</div>
+        <h2 class="section-title">Place an order</h2>
+        <p>Add as many items as you need. Review and edit the list below before filing — nothing is bought until you submit.</p>
+      </div>
+
+      <div class="order-card">
+        <div class="order-strip" aria-hidden="true"></div>
+        <div class="order-inner">
+
+          <div id="order-fallback" class="order-fallback">
+            Live order intake isn't available in this preview window. Fill the form and press submit —
+            it'll open a pre-filled email to <a href="mailto:orders@motherland.example">orders@motherland.example</a> instead.
+          </div>
+
+          <form id="order-form">
+            <div class="order-head">
+              <h3>Who's this for</h3>
+              <span>REF. WILL BE ASSIGNED ON SUBMIT</span>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="f-name">Your name</label>
+                <input type="text" id="f-name" name="name" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="f-contact">Email or WhatsApp number</label>
+                <input type="text" id="f-contact" name="contact" required autocomplete="email" placeholder="you@email.com or +1 416 555 0100">
+              </div>
+              <div class="field full">
+                <label for="f-city">Delivery city</label>
+                <input type="text" id="f-city" name="city" placeholder="Brampton, ON" required>
+              </div>
+            </div>
+
+            <div class="order-head" style="margin-top: 32px;">
+              <h3 id="item-builder-title">Add an item</h3>
+              <span id="item-edit-flag" style="display:none; color: var(--red);">EDITING ITEM</span>
+            </div>
+
+            <div class="field-grid">
+              <div class="field full">
+                <label for="i-product">Product name</label>
+                <input type="text" id="i-product" placeholder="e.g. Filter coffee decoction, 500 ml">
+                <span class="field-error" id="i-product-error">Enter a product name before adding it.</span>
+              </div>
+
+              <div class="field full">
+                <label for="i-link">Reference link <span class="opt">(Amazon, Myntra, Flipkart, etc.)</span></label>
+                <input type="url" id="i-link" placeholder="https://www.amazon.in/...">
+              </div>
+
+              <div class="field">
+                <label for="i-qty">Quantity</label>
+                <input type="number" id="i-qty" min="1" value="1">
+              </div>
+
+              <div class="field full">
+                <label>Who's sourcing this item?</label>
+                <div class="radio-group" data-group="item-fulfillment">
+                  <label class="radio-option checked">
+                    <input type="radio" name="item-fulfillment" value="Motherland sources it" checked>
+                    <span>Motherland sources &amp; buys it<span class="opt-desc">We purchase it locally in India on your behalf.</span></span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="item-fulfillment" value="Self-purchase, ship to Motherland">
+                    <span>I'll purchase it myself<span class="opt-desc">You buy it and ship it to Motherland's India address — we consolidate and forward it abroad.</span></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field full">
+                <label>Validate before shipping?</label>
+                <div class="radio-group" data-group="item-validation">
+                  <label class="radio-option checked">
+                    <input type="radio" name="item-validation" value="Yes" checked>
+                    <span>Yes, verify first<span class="opt-desc">We photo-check quality and packaging before it ships. Recommended.</span></span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="item-validation" value="No">
+                    <span>No, skip validation<span class="opt-desc">Ship as-is, no quality check. Slightly faster.</span></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="item-add-row">
+              <button type="button" class="btn btn-ghost" id="item-cancel" style="display:none;">Cancel edit</button>
+              <button type="button" class="btn btn-primary" id="item-add">+ Add item to order</button>
+            </div>
+
+            <div class="order-head" style="margin-top: 36px;">
+              <h3>Items in this order</h3>
+              <span id="items-count-badge">0 ITEMS</span>
+            </div>
+
+            <div class="items-table" id="items-table">
+              <div class="items-head">
+                <span>NO.</span><span>ITEM</span><span>QTY</span><span>HANDLING</span><span></span>
+              </div>
+              <div class="items-empty" id="items-empty">Nothing added yet — use the form above to add your first item.</div>
+              <div id="items-rows"></div>
+            </div>
+
+            <div class="field-grid" style="margin-top: 28px;">
+              <div class="field full">
+                <label for="f-notes">Notes <span class="opt">(optional)</span></label>
+                <textarea id="f-notes" name="notes" placeholder="Brand preferences, size, packaging instructions..."></textarea>
+              </div>
+            </div>
+
+            <div class="order-submit-row">
+              <button type="submit" class="btn btn-primary">Submit order</button>
+              <span class="order-note" id="submit-hint">NO PAYMENT NOW · WE CONFIRM PRICE BEFORE PURCHASING</span>
+            </div>
+          </form>
+
+          <div class="receipt" id="order-receipt">
+            <div class="stamp-ring" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Order filed</h3>
+            <p id="receipt-sub">We'll confirm pricing and timeline over email or WhatsApp shortly.</p>
+            <div class="code" id="receipt-code">MTL-000000</div>
+            <br>
+            <button type="button" class="btn btn-ghost" id="order-again">File another order</button>
+          </div>
+
+          <div class="order-count" id="order-count"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">Motherland</div>
+    <div class="foot-links">
+      <a href="#how">How it works</a>
+      <a href="#manifest">Manifest</a>
+      <a href="#model">Rates</a>
+      <a href="#order">Place an order</a>
+    </div>
+    <div class="approved">APPROVED FOR DISPATCH</div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('order-form');
+    var receipt = document.getElementById('order-receipt');
+    var receiptCode = document.getElementById('receipt-code');
+    var receiptSub = document.getElementById('receipt-sub');
+    var fallbackNotice = document.getElementById('order-fallback');
+    var countEl = document.getElementById('order-count');
+    var againBtn = document.getElementById('order-again');
+    if (!form) return;
+
+    var dbNs = null;
+    var items = [];
+    var editingIndex = null;
+
+    var productEl = document.getElementById('i-product');
+    var linkEl = document.getElementById('i-link');
+    var qtyEl = document.getElementById('i-qty');
+    var productError = document.getElementById('i-product-error');
+    var addBtn = document.getElementById('item-add');
+    var cancelBtn = document.getElementById('item-cancel');
+    var builderTitle = document.getElementById('item-builder-title');
+    var editFlag = document.getElementById('item-edit-flag');
+    var rowsEl = document.getElementById('items-rows');
+    var emptyEl = document.getElementById('items-empty');
+    var countBadge = document.getElementById('items-count-badge');
+    var submitHint = document.getElementById('submit-hint');
+
+    // Keep each radio-group's visual "checked" state in sync.
+    document.querySelectorAll('.radio-group').forEach(function (group) {
+      group.addEventListener('change', function () {
+        group.querySelectorAll('.radio-option').forEach(function (opt) {
+          var input = opt.querySelector('input');
+          opt.classList.toggle('checked', input.checked);
+        });
+      });
+    });
+
+    function itemFulfillment() {
+      var el = document.querySelector('[name="item-fulfillment"]:checked');
+      return el ? el.value : 'Motherland sources it';
+    }
+    function itemValidation() {
+      var el = document.querySelector('[name="item-validation"]:checked');
+      return el ? el.value : 'Yes';
+    }
+    function setRadioGroup(name, value) {
+      var el = document.querySelector('[name="' + name + '"][value="' + value + '"]');
+      if (el) {
+        el.checked = true;
+        el.closest('.radio-group').querySelectorAll('.radio-option').forEach(function (opt) {
+          opt.classList.toggle('checked', opt.querySelector('input').checked);
+        });
+      }
+    }
+
+    function shortFulfillment(v) { return v.indexOf('Self') === 0 ? 'SELF-BUY' : 'WE SOURCE'; }
+    function shortValidation(v) { return v === 'Yes' ? 'VALIDATE' : 'SKIP QC'; }
+
+    function resetBuilder() {
+      productEl.value = '';
+      linkEl.value = '';
+      qtyEl.value = '1';
+      setRadioGroup('item-fulfillment', 'Motherland sources it');
+      setRadioGroup('item-validation', 'Yes');
+      productEl.classList.remove('error');
+      productError.classList.remove('show');
+    }
+
+    function enterEditMode(idx) {
+      var it = items[idx];
+      productEl.value = it.product;
+      linkEl.value = it.link;
+      qtyEl.value = it.qty;
+      setRadioGroup('item-fulfillment', it.fulfillment);
+      setRadioGroup('item-validation', it.validation);
+      editingIndex = idx;
+      builderTitle.textContent = 'Edit item';
+      editFlag.style.display = '';
+      addBtn.textContent = 'Save changes';
+      cancelBtn.style.display = '';
+      productEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function exitEditMode() {
+      editingIndex = null;
+      builderTitle.textContent = 'Add an item';
+      editFlag.style.display = 'none';
+      addBtn.textContent = '+ Add item to order';
+      cancelBtn.style.display = 'none';
+      resetBuilder();
+    }
+
+    function renderItems() {
+      rowsEl.innerHTML = '';
+      emptyEl.classList.toggle('hide', items.length > 0);
+      countBadge.textContent = items.length + (items.length === 1 ? ' ITEM' : ' ITEMS');
+
+      items.forEach(function (it, idx) {
+        var row = document.createElement('div');
+        row.className = 'item-row';
+        var linkHtml = it.link
+          ? '<a href="' + it.link.replace(/"/g, '&quot;') + '" target="_blank" rel="noopener">view link ↗</a>'
+          : '';
+        row.innerHTML =
+          '<span class="i-num">' + String(idx + 1).padStart(2, '0') + '</span>' +
+          '<span class="i-name">' + escapeHtml(it.product) + linkHtml + '</span>' +
+          '<span class="i-qty">×' + escapeHtml(String(it.qty)) + '</span>' +
+          '<span class="i-tags">' +
+            '<span class="m-tag">' + shortFulfillment(it.fulfillment) + '</span>' +
+            '<span class="m-tag ' + (it.validation === 'Yes' ? 'easy' : '') + '">' + shortValidation(it.validation) + '</span>' +
+          '</span>' +
+          '<span class="i-actions">' +
+            '<button type="button" class="edit-btn" data-idx="' + idx + '">Edit</button>' +
+            '<button type="button" class="remove-btn" data-idx="' + idx + '">Remove</button>' +
+          '</span>';
+        rowsEl.appendChild(row);
+      });
+
+      rowsEl.querySelectorAll('.edit-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { enterEditMode(parseInt(btn.dataset.idx, 10)); });
+      });
+      rowsEl.querySelectorAll('.remove-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var idx = parseInt(btn.dataset.idx, 10);
+          items.splice(idx, 1);
+          if (editingIndex === idx) exitEditMode();
+          renderItems();
+        });
+      });
+    }
+
+    function escapeHtml(s) {
+      var d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    addBtn.addEventListener('click', function () {
+      var product = productEl.value.trim();
+      if (!product) {
+        productEl.classList.add('error');
+        productError.classList.add('show');
+        productEl.focus();
+        return;
+      }
+      productEl.classList.remove('error');
+      productError.classList.remove('show');
+
+      var newItem = {
+        product: product,
+        link: linkEl.value.trim(),
+        qty: qtyEl.value || '1',
+        fulfillment: itemFulfillment(),
+        validation: itemValidation(),
+      };
+
+      if (editingIndex !== null) {
+        items[editingIndex] = newItem;
+      } else {
+        items.push(newItem);
+      }
+      exitEditMode();
+      renderItems();
+    });
+
+    cancelBtn.addEventListener('click', exitEditMode);
+
+    function makeTrackingCode() {
+      var t = Date.now().toString(36).toUpperCase().slice(-5);
+      var r = Math.floor(10 + Math.random() * 90);
+      return 'MTL-' + t + r;
+    }
+
+    function mailtoFallback(order, code) {
+      var subject = encodeURIComponent('Motherland order — ' + code);
+      var lines = [
+        'Reference: ' + code,
+        'Name: ' + order.name,
+        'Contact: ' + order.contact,
+        'Delivery city: ' + order.city,
+        '',
+        'ITEMS:',
+      ];
+      order.items.forEach(function (it, i) {
+        lines.push(
+          (i + 1) + '. ' + it.product +
+          ' | qty ' + it.qty +
+          ' | ' + it.fulfillment +
+          ' | validation: ' + it.validation +
+          (it.link ? ' | ' + it.link : '')
+        );
+      });
+      lines.push('', 'Notes: ' + (order.notes || '—'));
+      var body = encodeURIComponent(lines.join('\n'));
+      window.location.href = 'mailto:orders@motherland.example?subject=' + subject + '&body=' + body;
+    }
+
+    function showReceipt(code, itemCount) {
+      form.style.display = 'none';
+      receiptCode.textContent = code;
+      receiptSub.textContent = itemCount + (itemCount === 1 ? ' item' : ' items') + ' filed. We\'ll confirm pricing and timeline over email or WhatsApp shortly.';
+      receipt.classList.add('show');
+    }
+
+    function refreshCount() {
+      if (!dbNs || !countEl) return;
+      try {
+        dbNs.collection('orders').onSnapshot(function (snap) {
+          countEl.textContent = snap.size + (snap.size === 1 ? ' order filed so far' : ' orders filed so far');
+        }, function () {
+          countEl.textContent = '';
+        });
+      } catch (err) {
+        countEl.textContent = '';
+      }
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (items.length === 0) {
+        submitHint.textContent = 'ADD AT LEAST ONE ITEM BEFORE SUBMITTING';
+        submitHint.style.color = 'var(--red)';
+        document.getElementById('items-table').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      var name = form.querySelector('#f-name').value.trim();
+      var contact = form.querySelector('#f-contact').value.trim();
+      var city = form.querySelector('#f-city').value.trim();
+      if (!name || !contact || !city) return;
+
+      var order = {
+        name: name,
+        contact: contact,
+        city: city,
+        notes: form.querySelector('#f-notes').value.trim(),
+        items: items,
+      };
+      var code = makeTrackingCode();
+
+      if (dbNs) {
+        var payload = Object.assign({}, order, {
+          trackingCode: code,
+          itemCount: items.length,
+          createdAt: new Date().toISOString(),
+        });
+        dbNs.collection('orders').doc(code).set(payload).then(function () {
+          showReceipt(code, items.length);
+        }).catch(function () {
+          mailtoFallback(order, code);
+          showReceipt(code, items.length);
+        });
+      } else {
+        mailtoFallback(order, code);
+        showReceipt(code, items.length);
+      }
+    });
+
+    if (againBtn) {
+      againBtn.addEventListener('click', function () {
+        form.reset();
+        items = [];
+        exitEditMode();
+        renderItems();
+        submitHint.textContent = 'NO PAYMENT NOW · WE CONFIRM PRICE BEFORE PURCHASING';
+        submitHint.style.color = '';
+        receipt.classList.remove('show');
+        form.style.display = '';
+      });
+    }
+
+    renderItems();
+
+    if (window.claude && typeof window.claude.use === 'function') {
+      window.claude.use('db').then(function (ns) {
+        dbNs = ns;
+        if (!ns) {
+          fallbackNotice.classList.add('show');
+        } else {
+          refreshCount();
+        }
+      }).catch(function () {
+        fallbackNotice.classList.add('show');
+      });
+    } else {
+      fallbackNotice.classList.add('show');
+    }
+  })();
+</script>
+
+</body>
+</html>
